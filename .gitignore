@@ -1,0 +1,36 @@
+.pio
+
+*.gcode
+*.gcode.gz
+
+*.3mf.tmp
+*.3mf.*.bak
+
+# Временные файлы блокировки SolidWorks (создаются при открытии деталей)
+~$*.SLDPRT
+~$*.SLDASM
+~$*.SLDDRW
+
+# Резервные копии и автосохранения SolidWorks
+*.bak
+*.bk1
+*.bk2
+*.swb
+
+# Логи и отчеты об ошибках
+*.log
+*.err
+*.out
+
+# Результаты симуляций и расчетов (SolidWorks Simulation / Flow Simulation)
+*.CWR
+*.STAT
+*.MAS
+*.OUT
+*.RST
+*.MSK
+*.FLD
+*.EFLD
+
+# Файлы предварительного просмотра и кэша
+*.sldextref
