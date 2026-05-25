@@ -1,53 +1,62 @@
-# 🛠️ Шпаргалка: Как добавлять 3D-файлы в этот репозиторий
+# How to Add 3D Files to This Repository
 
----
+## Before You Start
 
-## 📌 Перед началом работы (Один раз на новом ПК)
-Если вы скачали репозиторий на новый компьютер, обязательно активируйте Git LFS в консоли:
+If you cloned this repository on a new computer, make sure Git LFS is enabled:
+
 ```bash
 git lfs install
 ```
 
----
+## Step-by-Step Workflow for Adding New Files
 
-## 🚀 Пошаговый план добавления новых файлов
+### Step 1. Prepare Files in SolidWorks
 
-### Шаг 1. Подготовка файлов в SolidWorks
-1. **Не раскидывайте файлы!** Держите все `.sldprt` (детали) и `.sldasm` (сборки) в одной папке проекта.
-2. Перед сохранением в STL: экспортируйте файлы в **Двоичном (Binary)** формате (он весит меньше, чем ASCII).
+1. **Keep related files together.** Store all `.sldprt` part files and `.sldasm` assembly files in the same project folder.
+2. Before exporting to STL, use the **Binary** format whenever possible. It produces smaller files than ASCII STL.
 
-### Шаг 2. Перенос в репозиторий
-Скопируйте новые файлы `.sldprt`, `.sldasm` или `.stl` в папку вашего репозитория.
+### Step 2. Copy Files into the Repository
 
-### Шаг 3. Проверка и индексация (в терминале)
-1. Откройте терминал в папке проекта.
-2. Проверьте, что Git видит файлы и не подхватил временный мусор:
+Copy the new `.sldprt`, `.sldasm`, or `.stl` files into the appropriate folder in the repository.
+
+### Step 3. Check and Stage Files in the Terminal
+
+1. Open a terminal in the project folder.
+2. Check that Git sees the files and that no temporary files were added by mistake:
+
    ```bash
    git status
    ```
-   *(Если в списке есть файлы, начинающиеся с `~$`, закройте SolidWorks перед следующим шагом!)*
 
-3. Добавьте файлы в индекс:
+   If you see files starting with `~$`, close SolidWorks before continuing.
+
+3. Stage the files:
+
    ```bash
    git add .
    ```
 
-4. **Обязательно проверьте, что Git LFS перехватил файлы:**
+4. **Verify that Git LFS is tracking the large files:**
+
    ```bash
    git lfs status
    ```
-   *(Напротив ваших STL и деталей должно быть написано `LFS`)*
 
-### Шаг 4. Сохранение и отправка на GitHub
-Выполните финальные команды для отправки:
+   Your STL and SolidWorks files should appear as `LFS`-tracked files.
+
+### Step 4. Commit and Push to GitHub
+
+Run the final commands:
+
 ```bash
-git commit -m "Добавил [название детали/сборки]"
+git commit -m "Add [part-or-assembly-name]"
 git push origin main
 ```
-*Примечание: Загрузка может идти дольше обычного, так как файлы тяжелые. Не закрывайте терминал.*
 
----
+Large files may take longer than usual to upload, so do not close the terminal until the push is complete.
 
-## ⚠️ Что ДЕЛАТЬ НЕЛЬЗЯ:
-* ❌ **Не переименовывайте** файлы деталей `.sldprt` просто так в проводнике Windows — у сборки `.sldasm` сломаются ссылки. Переименовывайте только через SolidWorks (инструмент SolidWorks Explorer / File -> Rename).
-* ❌ **Не отключайте Git LFS**. Без него GitHub заблокирует файлы размером более 100 МБ.
+## What You Should Not Do
+
+- ❌ **Do not rename** `.sldprt` part files directly in Windows Explorer. That can break references inside the `.sldasm` assembly.
+  Rename parts only from SolidWorks using the built-in rename tools.
+- ❌ **Do not disable Git LFS.** Without it, GitHub may reject files larger than 100 MB.
